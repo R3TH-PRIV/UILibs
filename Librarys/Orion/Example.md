@@ -22,8 +22,8 @@ The `Darkrai Y Webhook Services` module is designed to interact with Discord web
 
 1. Import the module:
 ```lua
-local DYWebhook = loadstring(game:HttpGet("https://raw.githubusercontent.com/GamingScripter/Darkrai-Y/main/Libraries/Webhook%20Services/Main"))()
-DYWebhook.ErrorPrinting = true
+local DYWebhook = loadstring(game:HttpGet("https://raw.githubusercontent.com/R3TH-PRIV/UILibs/main/Librarys/Orion/Source"))()
+DYWebhook.ErrorPrinting = false
 ```
 
 ## Building Embed
