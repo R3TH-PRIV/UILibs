@@ -11,7 +11,7 @@ local DYWebhookServices = {
 		["420x420"] = "420x420",
 		["720x720"] = "720x720"
 	},
-	ErrorPrinting = false
+	ErrorPrinting = true
 }
 
 local httpService = game:GetService("HttpService")
@@ -92,7 +92,9 @@ local function postWebhook(url, data)
 	local success, statusCode, body = safeReq(url, data)
 
 	if success then
-		print("[Darkrai Y | Webhook Services]: Webhook Request Sent")
+		if DYWebhookServices.ErrorPrinting then
+			print("[Darkrai Y | Webhook Services]: Webhook Request Sent")
+		end
 	else
 		if DYWebhookServices.ErrorPrinting then
 			warn("[Darkrai Y | Webhook Services]: Webhook Request Failed. Trying Proxy Urls")
@@ -100,7 +102,9 @@ local function postWebhook(url, data)
 		local success, statusCode, body = safeReq(ProxyURL, data)
 
 		if success then
-			print("[Darkrai Y | Webhook Services]: Webhook Request Sent")
+		    if DYWebhookServices.ErrorPrinting then
+		    	print("[Darkrai Y | Webhook Services]: Webhook Request Sent")
+		    end
 		else
 			if DYWebhookServices.ErrorPrinting then
 				warn("[Darkrai Y | Webhook Services]: Webhook Request Failed. Trying Backup URL")
@@ -109,7 +113,9 @@ local function postWebhook(url, data)
 			success, statusCode, body = safeReq(BackupProxyURL, data)
 
 			if success then
-				print("[Darkrai Y | Webhook Services]: Backup Request Sent")
+				if DYWebhookServices.ErrorPrinting then
+					print("[Darkrai Y | Webhook Services]: Webhook Request Sent")
+		        end
 			else
 				if DYWebhookServices.ErrorPrinting then
 					warn("[Darkrai Y | Webhook Services]: Backup Webhook Request Failed. Trying Last URL")
@@ -117,7 +123,9 @@ local function postWebhook(url, data)
 				success, statusCode, body = safeReq(LastProxyURL, data)
 				
 				if success then
-					print("[Darkrai Y | Webhook Services]: Last Request Send")
+		            if DYWebhookServices.ErrorPrinting then
+		            	print("[Darkrai Y | Webhook Services]: Webhook Request Sent")
+		            end
 				else
 					if DYWebhookServices.ErrorPrinting then
 						warn("[Darkrai Y | Webhook Services]: Backup Request Failed")
