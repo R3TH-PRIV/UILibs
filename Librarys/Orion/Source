@@ -11,7 +11,7 @@ local DYWebhookServices = {
 		["420x420"] = "420x420",
 		["720x720"] = "720x720"
 	},
-	ErrorPrinting = true
+	ErrorPrinting = false
 }
 
 local httpService = game:GetService("HttpService")
